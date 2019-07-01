@@ -9,13 +9,37 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Camera2D",
+"class": "mhCamera",
+"language": "GDScript",
+"path": "res://game/player/mhCamera.gd"
+}, {
 "base": "Node2D",
 "class": "mhLevel",
 "language": "GDScript",
-"path": "res://game/mh_level.gd"
+"path": "res://game/mhLevel.gd"
+}, {
+"base": "Node2D",
+"class": "mhLocation",
+"language": "GDScript",
+"path": "res://game/location/mhLocation.gd"
+}, {
+"base": "mhLocation",
+"class": "mhLocationStatic",
+"language": "GDScript",
+"path": "res://game/location/mhLocationStatic.gd"
+}, {
+"base": "Node2D",
+"class": "mhPlayer",
+"language": "GDScript",
+"path": "res://game/player/mhPlayer.gd"
 } ]
 _global_script_class_icons={
-"mhLevel": ""
+"mhCamera": "",
+"mhLevel": "",
+"mhLocation": "",
+"mhLocationStatic": "",
+"mhPlayer": ""
 }
 
 [application]
@@ -26,7 +50,7 @@ config/icon="res://game/icon.png"
 
 [autoload]
 
-utils="*res://game/utils.gd"
+utils="*res://game/mhUtils.gd"
 
 [display]
 
@@ -39,4 +63,4 @@ window/stretch/aspect="expand"
 
 [rendering]
 
-environment/default_clear_color=Color( 1, 1, 1, 1 )
+environment/default_clear_color=Color( 0, 0, 0, 1 )

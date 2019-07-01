@@ -1,14 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://game/mh_level.gd" type="Script" id=1]
-[ext_resource path="res://game/location/location_static.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/mhLevel.gd" type="Script" id=1]
+[ext_resource path="res://game/location/mhLocationStatic.gd" type="Script" id=2]
 [ext_resource path="res://resources/locations/chess/background.png" type="Texture" id=3]
+[ext_resource path="res://game/player/mhPlayer.gd" type="Script" id=4]
+[ext_resource path="res://game/player/mhCamera.gd" type="Script" id=5]
 
-[node name="mhLevel" type="Node2D"]
+[node name="level_temp" type="Node2D"]
 script = ExtResource( 1 )
-stretch = 3
+_stretch = 3
 
-[node name="location_static" parent="." instance=ExtResource( 2 )]
-level_size = Vector2( 2400, 1080 )
-texture = ExtResource( 3 )
+[node name="location" type="Node2D" parent="."]
+script = ExtResource( 2 )
+location_size = Rect2( 0, 0, 2400, 1080 )
+_texture = ExtResource( 3 )
+_background_color = Color( 1, 1, 1, 1 )
+
+[node name="player" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="camera" type="Camera2D" parent="player"]
+anchor_mode = 0
+current = true
+script = ExtResource( 5 )
 
