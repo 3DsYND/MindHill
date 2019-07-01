@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game/mh_level.gd" type="Script" id=1]
+[ext_resource path="res://game/location/location_static.tscn" type="PackedScene" id=2]
+[ext_resource path="res://resources/locations/chess/background.png" type="Texture" id=3]
+
+[node name="mhLevel" type="Node2D"]
+script = ExtResource( 1 )
+stretch = 3
+
+[node name="location_static" parent="." instance=ExtResource( 2 )]
+level_size = Vector2( 2400, 1080 )
+texture = ExtResource( 3 )
+
