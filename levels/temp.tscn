@@ -1,26 +1,59 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game/mhLevel.gd" type="Script" id=1]
-[ext_resource path="res://game/location/mhLocationStatic.gd" type="Script" id=2]
-[ext_resource path="res://resources/locations/chess/background.png" type="Texture" id=3]
-[ext_resource path="res://game/player/mhPlayer.gd" type="Script" id=4]
-[ext_resource path="res://game/player/mhCamera.gd" type="Script" id=5]
+[ext_resource path="res://game/player/mhPlayer.gd" type="Script" id=2]
+[ext_resource path="res://game/player/mhCamera.gd" type="Script" id=3]
+[ext_resource path="res://game/player/mhController.gd" type="Script" id=4]
+[ext_resource path="res://game/location/mhLocation.gd" type="Script" id=5]
+[ext_resource path="res://game/location/mhPhysics.gd" type="Script" id=6]
+[ext_resource path="res://game/location/mhBackgroundStatic.gd" type="Script" id=7]
+[ext_resource path="res://levels/level_1/locations/background.png" type="Texture" id=8]
 
 [node name="level_temp" type="Node2D"]
 script = ExtResource( 1 )
-_stretch = 3
-
-[node name="location" type="Node2D" parent="."]
-script = ExtResource( 2 )
-location_size = Rect2( 0, 0, 2400, 1080 )
-_texture = ExtResource( 3 )
-_background_color = Color( 1, 1, 1, 1 )
 
 [node name="player" type="Node2D" parent="."]
-script = ExtResource( 4 )
+position = Vector2( 199.58, 928.73 )
+script = ExtResource( 2 )
+dependences = {
+"controller": NodePath("mhController")
+}
 
 [node name="camera" type="Camera2D" parent="player"]
-anchor_mode = 0
 current = true
+limit_left = 0
+limit_top = 0
+limit_right = 2400
+limit_bottom = 1080
+script = ExtResource( 3 )
+dependences = {
+"background": NodePath("../../mhLocation/mhBackgroundStatic")
+}
+
+[node name="ColorRect" type="ColorRect" parent="player"]
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+color = Color( 0.937255, 0, 0, 1 )
+
+[node name="mhController" type="Node2D" parent="player"]
+script = ExtResource( 4 )
+dependences = {
+"physics": NodePath("../../mhLocation/mhPhysics")
+}
+speed = 2000.0
+
+[node name="mhLocation" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
+[node name="mhPhysics" type="Node2D" parent="mhLocation"]
+script = ExtResource( 6 )
+game_area = Rect2( 100, 100, 2200, 880 )
+
+[node name="mhBackgroundStatic" type="Node2D" parent="mhLocation"]
+z_index = -1
+script = ExtResource( 7 )
+location_size = Rect2( 0, 0, 2400, 1080 )
+_texture = ExtResource( 8 )
+_background_color = Color( 1, 1, 1, 1 )

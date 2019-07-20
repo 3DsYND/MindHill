@@ -1,17 +1,12 @@
+tool
 extends Node
 
-var current_scene = null
+func remove_children(node):
+	for child in node.get_children():
+		node.remove_child(child)
+		child.queue_free()
 
-
+func _init():
+	print("init", is_inside_tree())
 func _ready():
-	var root = get_tree().get_root()
-	current_scene = root.get_child(root.get_child_count() - 1)
-
-func get_component(name, node=null):
-	if not node: node = current_scene
-	var nodes = node.get_children()
-	for component in nodes:
-		print(component.type)
-		if "type" in component and component.type == name:
-			return component
-	return null
+	print("_ready", is_inside_tree())

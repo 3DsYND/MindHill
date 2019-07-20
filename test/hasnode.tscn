@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "tool
+extends Node2D
+
+export(NodePath) onready var node = get_node(node) setget asd
+
+func _ready():
+	print(node)
+
+func asd(a):
+	node = get_node(a)
+	print(a)"
+
+[node name="Node2D" type="Node2D"]
+script = SubResource( 1 )
+node = Object(Node2D,"_import_path":NodePath(""),"pause_mode":0,"editor/display_folded":false,"visible":true,"modulate":Color( 1, 1, 1, 1 ),"self_modulate":Color( 1, 1, 1, 1 ),"show_behind_parent":false,"light_mask":1,"material":null,"use_parent_material":false,"position":Vector2( 0, 0 ),"rotation":0.0,"scale":Vector2( 1, 1 ),"z_index":0,"z_as_relative":true,"script":null)
+
+
+[node name="Node2D" type="Node2D" parent="."]
