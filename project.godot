@@ -12,79 +12,61 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "mhBackground",
 "language": "GDScript",
-"path": "res://game/location/mhBackground.gd"
+"path": "res://app/mhLocation/mhBackground/mhBackground.gd"
 }, {
 "base": "mhBackground",
 "class": "mhBackgroundStatic",
 "language": "GDScript",
-"path": "res://game/location/mhBackgroundStatic.gd"
+"path": "res://app/mhLocation/mhBackground/mhBackgroundStatic.gd"
 }, {
 "base": "Camera2D",
 "class": "mhCamera",
 "language": "GDScript",
-"path": "res://game/player/mhCamera.gd"
+"path": "res://app/mhPlayer/mhCamera.gd"
 }, {
-"base": "Node2D",
+"base": "Node",
 "class": "mhController",
 "language": "GDScript",
-"path": "res://game/player/mhController.gd"
-}, {
-"base": "mhController",
-"class": "mhControllerPath",
-"language": "GDScript",
-"path": "res://game/player/mhControllerPath.gd"
+"path": "res://app/mhPlayer/mhController.gd"
 }, {
 "base": "Reference",
 "class": "mhDependences",
 "language": "GDScript",
-"path": "res://game/mhDependences.gd"
+"path": "res://app/mhDependences.gd"
 }, {
-"base": "Node2D",
+"base": "Node",
 "class": "mhLevel",
 "language": "GDScript",
-"path": "res://game/mhLevel.gd"
+"path": "res://app/mhLevel/mhLevel.gd"
 }, {
 "base": "mhLevel",
 "class": "mhLevelStretch",
 "language": "GDScript",
-"path": "res://game/mhLevelStretch.gd"
+"path": "res://app/mhLevel/mhLevelStretch.gd"
 }, {
-"base": "mhLocation",
-"class": "mhLocatioinPath",
-"language": "GDScript",
-"path": "res://game/location/mhLocationPath.gd"
-}, {
-"base": "mhLocatioinPath",
-"class": "mhLocatioinPathRectagle",
-"language": "GDScript",
-"path": "res://game/location/mhLocationPathRectangle.gd"
-}, {
-"base": "Node2D",
+"base": "Node",
 "class": "mhLocation",
 "language": "GDScript",
-"path": "res://game/location/mhLocation.gd"
+"path": "res://app/mhLocation/mhLocation.gd"
 }, {
-"base": "Node2D",
+"base": "Node",
 "class": "mhPhysics",
 "language": "GDScript",
-"path": "res://game/location/mhPhysics.gd"
+"path": "res://app/mhLocation/mhPhysics/mhPhysics.gd"
 }, {
 "base": "Node2D",
 "class": "mhPlayer",
 "language": "GDScript",
-"path": "res://game/player/mhPlayer.gd"
+"path": "res://app/mhPlayer/mhPlayer.gd"
 } ]
 _global_script_class_icons={
 "mhBackground": "",
 "mhBackgroundStatic": "",
 "mhCamera": "",
 "mhController": "",
-"mhControllerPath": "",
 "mhDependences": "",
 "mhLevel": "",
 "mhLevelStretch": "",
-"mhLocatioinPath": "",
-"mhLocatioinPathRectagle": "",
 "mhLocation": "",
 "mhPhysics": "",
 "mhPlayer": ""
@@ -94,11 +76,11 @@ _global_script_class_icons={
 
 config/name="MindHill"
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
-config/icon="res://game/icon.png"
+config/icon="res://app/system/icon.png"
 
 [autoload]
 
-utils="*res://game/mhUtils.gd"
+utils="*res://app/mhUtils.gd"
 
 [debug]
 

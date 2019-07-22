@@ -1,6 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://game/location/mhBackgroundStatic.gd" type="Script" id=1]
+[ext_resource path="res://app/mhLocation/mhBackground/mhBackgroundStatic.gd" type="Script" id=1]
+
+
+
+
 
 [sub_resource type="GDScript" id=1]
 script/source = "tool
