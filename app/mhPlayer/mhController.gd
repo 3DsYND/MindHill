@@ -2,10 +2,10 @@ tool
 extends Node
 class_name mhController
 
-var deps:mhDependences
+onready var deps = preload("res://app/libs/mhDeps.gd").new(self, "_post_update_dependences", "_pre_update_dependences")
 export(Dictionary) var dependences setget _set_dependences
 
-export(Vector2) var spawn = Vector2(100, 100)
+export(Vector2) var spawn = Vector2(100, 100) setget _set_spawn
 export(float) var speed = 110*5
 var run = {"up": 0, "down": 0, "right": 0, "left": 0}
 var position_node
@@ -17,8 +17,8 @@ func _set_dependences(new_dependences):
 		dependences = deps.update(new_dependences)
 
 func _pre_update_dependences(new_components_name=null):
-	# ToDo: free position node or physics.remove
-	pass
+	if deps.get("physics"):
+		deps.get("physics").remove(position_node)
 
 func _post_update_dependences(new_components_name=null):
 	if deps.get("physics"):
@@ -28,10 +28,8 @@ func _post_update_dependences(new_components_name=null):
 func _ready():
 	set_physics_process(false)
 	
-	deps = mhDependences.new(self, "_post_update_dependences", "_pre_update_dependences")
 	deps.add("physics", mhPhysics)
 	dependences = deps.update(dependences)
-	_post_update_dependences()
 	if position_node and not Engine.is_editor_hint():
 		set_physics_process(true)
 
@@ -63,3 +61,7 @@ func _physics_process(delta):
 func get_position():
 	return position_node.position
 
+func _set_spawn(new_spawn):
+	spawn = new_spawn
+	if deps and deps.has("physics"):
+		deps.get("physics").set_spawn(position_node, spawn)

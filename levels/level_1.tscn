@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://app/mhLevel/mhLevelStretch.gd" type="Script" id=1]
+[ext_resource path="res://app/mhLocation/mhLocation.gd" type="Script" id=2]
+[ext_resource path="res://app/mhLocation/mhPhysics/mhPhysicsPath.gd" type="Script" id=3]
+[ext_resource path="res://app/mhPath2D/mhPath2DRect.gd" type="Script" id=4]
+[ext_resource path="res://app/mhLocation/mhPhysics/mhPhysics.gd" type="Script" id=5]
+[ext_resource path="res://app/mhLocation/mhBackground/mhBackgroundStatic.gd" type="Script" id=6]
+[ext_resource path="res://objects/locations/chess/background.png" type="Texture" id=7]
+[ext_resource path="res://app/mhPlayer/mhPlayer.gd" type="Script" id=8]
+[ext_resource path="res://app/mhPlayer/mhController.gd" type="Script" id=9]
+[ext_resource path="res://app/mhPlayer/mhCamera.gd" type="Script" id=10]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 80, 100, 900, 0, 0, 0, 0, 180, 980, 0, 0, 80, 0, 2195, 980, 0, 0, 0, 0, 2275, 900, 0, 0, 0, -80, 2275, 180, 0, 0, 0, 0, 2195, 100, 0, 0, -80, 0, 180, 100, 0, 0, 0, 0, 100, 180, 0, 0, 0, 0, 100, 900 )
+}
+
+[node name="mhLevelStretch" type="Node"]
+script = ExtResource( 1 )
+_stretch = 3
+
+[node name="mhLocation" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="mhPhysicsPath" type="Node" parent="mhLocation"]
+script = ExtResource( 3 )
+dependences = {
+"path2d": NodePath("mhPath2DRect")
+}
+
+[node name="mhPath2DRect" type="Path2D" parent="mhLocation/mhPhysicsPath"]
+curve = SubResource( 1 )
+script = ExtResource( 4 )
+game_area = Rect2( 100, 100, 2175, 880 )
+corner_radius = 80
+
+[node name="mhPhysics" type="Node" parent="mhLocation"]
+script = ExtResource( 5 )
+
+[node name="mhBackgroundStatic" type="Node2D" parent="mhLocation"]
+z_index = -1
+script = ExtResource( 6 )
+location_size = Rect2( 0, 0, 2400, 1080 )
+_texture = ExtResource( 7 )
+_background_color = Color( 1, 1, 1, 1 )
+
+[node name="mhPlayer" type="Node2D" parent="."]
+position = Vector2( 104.04, 100 )
+script = ExtResource( 8 )
+dependences = {
+"controller": NodePath("mhController")
+}
+
+[node name="mhController" type="Node" parent="mhPlayer"]
+script = ExtResource( 9 )
+dependences = {
+"physics": NodePath("../../mhLocation/mhPhysicsPath")
+}
+spawn = Vector2( 104.04, 100 )
+
+[node name="mhCamera" type="Camera2D" parent="mhPlayer"]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 2400
+limit_bottom = 1080
+limit_smoothed = true
+smoothing_enabled = true
+script = ExtResource( 10 )
+dependences = {
+"background": NodePath("../../mhLocation/mhBackgroundStatic")
+}
+
+[node name="ColorRect" type="ColorRect" parent="mhPlayer"]
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+color = Color( 1, 0, 0, 1 )

@@ -5,8 +5,6 @@ class_name mhLevelStretch
 export(int, "Ignore", "Keep", "Keep width", "Keep height", "Expand") var _stretch = 1
 
 func _ready():
-	._ready()
-	
 	#Setting the scene for different screen proportions
 	if not Engine.is_editor_hint():
 		var stretch_size = Vector2(1920, 1080)

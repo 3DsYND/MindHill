@@ -29,11 +29,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://app/mhPlayer/mhController.gd"
 }, {
-"base": "Reference",
-"class": "mhDependences",
-"language": "GDScript",
-"path": "res://app/mhDependences.gd"
-}, {
 "base": "Node",
 "class": "mhLevel",
 "language": "GDScript",
@@ -49,32 +44,50 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://app/mhLocation/mhLocation.gd"
 }, {
+"base": "Path2D",
+"class": "mhPath2DRect",
+"language": "GDScript",
+"path": "res://app/mhPath2D/mhPath2DRect.gd"
+}, {
 "base": "Node",
 "class": "mhPhysics",
 "language": "GDScript",
 "path": "res://app/mhLocation/mhPhysics/mhPhysics.gd"
 }, {
+"base": "mhPhysics",
+"class": "mhPhysicsPath",
+"language": "GDScript",
+"path": "res://app/mhLocation/mhPhysics/mhPhysicsPath.gd"
+}, {
 "base": "Node2D",
 "class": "mhPlayer",
 "language": "GDScript",
 "path": "res://app/mhPlayer/mhPlayer.gd"
+}, {
+"base": "Object",
+"class": "mhProperties",
+"language": "GDScript",
+"path": "res://test/mhProperties.gd"
 } ]
 _global_script_class_icons={
 "mhBackground": "",
 "mhBackgroundStatic": "",
 "mhCamera": "",
 "mhController": "",
-"mhDependences": "",
 "mhLevel": "",
 "mhLevelStretch": "",
 "mhLocation": "",
+"mhPath2DRect": "",
 "mhPhysics": "",
-"mhPlayer": ""
+"mhPhysicsPath": "",
+"mhPlayer": "",
+"mhProperties": ""
 }
 
 [application]
 
 config/name="MindHill"
+run/main_scene="res://levels/level_1.tscn"
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://app/system/icon.png"
 

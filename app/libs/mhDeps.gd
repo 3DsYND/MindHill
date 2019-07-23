@@ -1,5 +1,4 @@
 tool
-class_name mhDependences
 
 class Component:
 	var type
@@ -28,7 +27,13 @@ func add(name, type=null, path=NodePath()):
 func get(name):
 	if _components.has(name):
 		return _components[name].node
+	print_debug("Component ", name, " not found")
 	return null
+
+func has(name):
+	if _components.has(name):
+		return true
+	return false
 
 func update(new_paths):
 	if not new_paths: return _get_name_path()
