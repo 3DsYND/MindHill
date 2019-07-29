@@ -87,13 +87,9 @@ _global_script_class_icons={
 [application]
 
 config/name="MindHill"
-run/main_scene="res://levels/level_1.tscn"
+run/main_scene="res://levels/level_2.tscn"
 boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://app/system/icon.png"
-
-[autoload]
-
-utils="*res://app/mhUtils.gd"
 
 [debug]
 
@@ -137,6 +133,11 @@ run_down={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+pointing/emulate_mouse_from_touch=false
 
 [rendering]
 

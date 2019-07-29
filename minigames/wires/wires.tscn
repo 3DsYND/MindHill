@@ -1,0 +1,188 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://minigames/wires/wires.gd" type="Script" id=1]
+[ext_resource path="res://app/mhLocation/mhBackground/mhBackgroundStatic.gd" type="Script" id=2]
+[ext_resource path="res://minigames/wires/board.png" type="Texture" id=3]
+[ext_resource path="res://minigames/wires/wires_anim/animation_wire_6.1.png" type="Texture" id=4]
+[ext_resource path="res://minigames/wires/wires_anim/animation_wire_5.1.png" type="Texture" id=5]
+[ext_resource path="res://minigames/wires/wires_anim/animation_wire_3.1.png" type="Texture" id=6]
+[ext_resource path="res://minigames/wires/wires_anim/animation_wire_1.1.png" type="Texture" id=7]
+[ext_resource path="res://minigames/wires/wires_anim/animation_wire_2.1.png" type="Texture" id=8]
+[ext_resource path="res://minigames/wires/wires_anim/animation_wire_4.1.png" type="Texture" id=9]
+[ext_resource path="res://minigames/wires/wires_anim/animation_wire_1.2.png" type="Texture" id=10]
+[ext_resource path="res://minigames/wires/wires_anim/animation_wire_2.2.png" type="Texture" id=11]
+[ext_resource path="res://minigames/wires/wires_anim/animation_wire_4.2.png" type="Texture" id=12]
+[ext_resource path="res://minigames/wires/wires_anim/animation_wire_5.2.png" type="Texture" id=13]
+[ext_resource path="res://minigames/wires/wires_anim/animation_wire_6.2.png" type="Texture" id=14]
+[ext_resource path="res://minigames/wires/wires_anim/animation_wire_3.2.png" type="Texture" id=15]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 50.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "flash"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.12, 0.19, 0.31, 1 ),
+"transitions": PoolRealArray( 0.307786, 1.03527, 0.353553, 1, 0.5 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.533333 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="wires" type="Node2D"]
+z_index = 1
+script = ExtResource( 1 )
+
+[node name="mhBackgroundStatic" type="Node2D" parent="."]
+position = Vector2( 369.185, 157 )
+z_index = -1
+script = ExtResource( 2 )
+location_size = Rect2( 0, 0, 1166, 776.42 )
+_texture = ExtResource( 3 )
+_background_color = Color( 1, 1, 1, 0 )
+
+[node name="wires" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="off_1" type="Sprite" parent="wires"]
+position = Vector2( 1214.61, 671.864 )
+z_index = 2
+texture = ExtResource( 4 )
+
+[node name="off_2" type="Sprite" parent="wires"]
+position = Vector2( 1113.38, 679.628 )
+z_index = 2
+texture = ExtResource( 5 )
+
+[node name="off_3" type="Sprite" parent="wires"]
+position = Vector2( 733.691, 619.55 )
+z_index = 2
+texture = ExtResource( 6 )
+
+[node name="off_4" type="Sprite" parent="wires"]
+position = Vector2( 576.431, 572.755 )
+z_index = 2
+texture = ExtResource( 7 )
+
+[node name="off_5" type="Sprite" parent="wires"]
+position = Vector2( 622.811, 572.335 )
+z_index = 2
+texture = ExtResource( 8 )
+
+[node name="off_6" type="Sprite" parent="wires"]
+position = Vector2( 929.288, 641.51 )
+z_index = 2
+texture = ExtResource( 9 )
+
+[node name="on_1" type="Sprite" parent="wires"]
+visible = false
+position = Vector2( 905.814, 707.19 )
+texture = ExtResource( 10 )
+
+[node name="on_2" type="Sprite" parent="wires"]
+visible = false
+position = Vector2( 918.07, 702.742 )
+texture = ExtResource( 11 )
+
+[node name="on_3" type="Sprite" parent="wires"]
+visible = false
+position = Vector2( 820.398, 694.889 )
+texture = ExtResource( 12 )
+
+[node name="on_4" type="Sprite" parent="wires"]
+visible = false
+position = Vector2( 803.613, 613.461 )
+texture = ExtResource( 13 )
+
+[node name="on_5" type="Sprite" parent="wires"]
+visible = false
+position = Vector2( 854.159, 632.552 )
+texture = ExtResource( 14 )
+
+[node name="on_6" type="Sprite" parent="wires"]
+visible = false
+position = Vector2( 1168.45, 717.27 )
+texture = ExtResource( 15 )
+
+[node name="buttons" type="Node2D" parent="."]
+editor/display_folded = true
+z_index = 2
+
+[node name="button_wire_1" type="TouchScreenButton" parent="buttons"]
+position = Vector2( 1283.66, 657.058 )
+shape = SubResource( 1 )
+
+[node name="button_wire_2" type="TouchScreenButton" parent="buttons"]
+position = Vector2( 1148.79, 648.99 )
+shape = SubResource( 1 )
+
+[node name="button_wire_3" type="TouchScreenButton" parent="buttons"]
+position = Vector2( 743.613, 663.092 )
+shape = SubResource( 1 )
+
+[node name="button_wire_4" type="TouchScreenButton" parent="buttons"]
+position = Vector2( 543.254, 675.16 )
+shape = SubResource( 1 )
+
+[node name="button_wire_5" type="TouchScreenButton" parent="buttons"]
+position = Vector2( 655.481, 614.299 )
+shape = SubResource( 1 )
+
+[node name="button_wire_6" type="TouchScreenButton" parent="buttons"]
+position = Vector2( 837.369, 624.962 )
+shape = SubResource( 1 )
+
+[node name="button_slot_1" type="TouchScreenButton" parent="buttons"]
+position = Vector2( 620.446, 800.121 )
+shape = SubResource( 1 )
+
+[node name="button_slot_2" type="TouchScreenButton" parent="buttons"]
+position = Vector2( 739.325, 800.121 )
+shape = SubResource( 1 )
+
+[node name="button_slot_3" type="TouchScreenButton" parent="buttons"]
+position = Vector2( 862.755, 800.121 )
+shape = SubResource( 1 )
+
+[node name="button_slot_4" type="TouchScreenButton" parent="buttons"]
+position = Vector2( 995.286, 800.121 )
+shape = SubResource( 1 )
+
+[node name="button_slot_5" type="TouchScreenButton" parent="buttons"]
+position = Vector2( 1134.64, 800.121 )
+shape = SubResource( 1 )
+
+[node name="button_slot_6" type="TouchScreenButton" parent="buttons"]
+position = Vector2( 1249.54, 800.121 )
+shape = SubResource( 1 )
+
+[node name="flash" type="Node2D" parent="."]
+z_index = 5
+
+[node name="ColorRect" type="ColorRect" parent="flash"]
+margin_left = -789.0
+margin_top = -524.0
+margin_right = 2893.0
+margin_bottom = 1884.0
+color = Color( 1, 1, 1, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="flash"]
+anims/flash = SubResource( 2 )
+[connection signal="released" from="buttons/button_wire_1" to="." method="_on_wire_released_event" binds= [ 1 ]]
+[connection signal="released" from="buttons/button_wire_2" to="." method="_on_wire_released_event" binds= [ 2 ]]
+[connection signal="released" from="buttons/button_wire_3" to="." method="_on_wire_released_event" binds= [ 3 ]]
+[connection signal="released" from="buttons/button_wire_4" to="." method="_on_wire_released_event" binds= [ 4 ]]
+[connection signal="released" from="buttons/button_wire_5" to="." method="_on_wire_released_event" binds= [ 5 ]]
+[connection signal="released" from="buttons/button_wire_6" to="." method="_on_wire_released_event" binds= [ 6 ]]
+[connection signal="released" from="buttons/button_slot_1" to="." method="_on_slot_released_event" binds= [ 1 ]]
+[connection signal="released" from="buttons/button_slot_2" to="." method="_on_slot_released_event" binds= [ 2 ]]
+[connection signal="released" from="buttons/button_slot_3" to="." method="_on_slot_released_event" binds= [ 3 ]]
+[connection signal="released" from="buttons/button_slot_4" to="." method="_on_slot_released_event" binds= [ 4 ]]
+[connection signal="released" from="buttons/button_slot_5" to="." method="_on_slot_released_event" binds= [ 5 ]]
+[connection signal="released" from="buttons/button_slot_6" to="." method="_on_slot_released_event" binds= [ 6 ]]

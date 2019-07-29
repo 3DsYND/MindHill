@@ -1,0 +1,111 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://app/mhLevel/mhLevelStretch.gd" type="Script" id=1]
+[ext_resource path="res://app/mhLocation/mhLocation.gd" type="Script" id=2]
+[ext_resource path="res://app/mhLocation/mhBackground/mhBackgroundStatic.gd" type="Script" id=3]
+[ext_resource path="res://objects/locations/chess/background.png" type="Texture" id=4]
+[ext_resource path="res://app/mhLocation/mhPhysics/mhPhysicsPath.gd" type="Script" id=5]
+[ext_resource path="res://app/mhPath2D/mhPath2DRect.gd" type="Script" id=6]
+[ext_resource path="res://app/mhPlayer/mhPlayer.gd" type="Script" id=7]
+[ext_resource path="res://app/mhPlayer/mhController.gd" type="Script" id=8]
+[ext_resource path="res://app/mhPlayer/mhCamera.gd" type="Script" id=9]
+[ext_resource path="res://objects/fan/fan.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objects/tv/tv.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/swing/swing.tscn" type="PackedScene" id=12]
+[ext_resource path="res://objects/door/door_tape/door_tape.tscn" type="PackedScene" id=13]
+[ext_resource path="res://minigames/wires/wires.tscn" type="PackedScene" id=14]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 60, 113.29, 895.55, 0, 0, 0, 0, 173.29, 955.55, 0, 0, 60, 0, 2195.55, 955.55, 0, 0, 0, 0, 2255.55, 895.55, 0, 0, 0, -60, 2255.55, 163.29, 0, 0, 0, 0, 2195.55, 103.29, 0, 0, -60, 0, 173.29, 103.29, 0, 0, 0, 0, 113.29, 163.29, 0, 0, 0, 0, 113.29, 895.55 )
+}
+
+[node name="mhLevelStretch" type="Node"]
+script = ExtResource( 1 )
+_stretch = 3
+
+[node name="mhLocation" type="Node" parent="."]
+editor/display_folded = true
+script = ExtResource( 2 )
+
+[node name="mhBackgroundStatic" type="Node2D" parent="mhLocation"]
+z_index = -1
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+location_size = Rect2( 0, 0, 2400, 1080 )
+_texture = ExtResource( 4 )
+_background_color = Color( 0, 0, 0, 1 )
+
+[node name="mhPhysicsPath" type="Node" parent="mhLocation"]
+script = ExtResource( 5 )
+_debug_info = false
+dependences = {
+"path2d": NodePath("mhPath2DRect")
+}
+
+[node name="mhPath2DRect" type="Path2D" parent="mhLocation/mhPhysicsPath"]
+curve = SubResource( 1 )
+script = ExtResource( 6 )
+game_area = Rect2( 113.29, 103.29, 2142.26, 852.26 )
+corner_radius = 60
+
+[node name="mhPlayer" type="Node2D" parent="."]
+z_index = 11
+script = ExtResource( 7 )
+dependences = {
+"controller": NodePath("mhController")
+}
+
+[node name="mhController" type="Node" parent="mhPlayer"]
+script = ExtResource( 8 )
+dependences = {
+"physics": NodePath("../../mhLocation/mhPhysicsPath")
+}
+spawn = Vector2( 100, 100 )
+speed = 550.0
+
+[node name="mhCamera" type="Camera2D" parent="mhPlayer"]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 2400
+limit_bottom = 1080
+limit_smoothed = true
+smoothing_enabled = true
+script = ExtResource( 9 )
+dependences = {
+"background": NodePath("../../mhLocation/mhBackgroundStatic")
+}
+
+[node name="ColorRect" type="ColorRect" parent="mhPlayer"]
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
+color = Color( 1, 0, 0, 1 )
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="fan" parent="Objects" instance=ExtResource( 10 )]
+position = Vector2( 72.1555, 665.661 )
+z_index = 21
+animation = "stop"
+frame = 4
+
+[node name="tv" parent="Objects" instance=ExtResource( 11 )]
+position = Vector2( 1360, 941.798 )
+
+[node name="swing" parent="Objects" instance=ExtResource( 12 )]
+position = Vector2( 721.798, 38.989 )
+z_index = 21
+
+[node name="door_tape" parent="Objects" instance=ExtResource( 13 )]
+position = Vector2( 2226.92, 660.985 )
+
+[node name="minigames" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="wires" parent="minigames" instance=ExtResource( 14 )]
+visible = false
+[connection signal="fan_started" from="Objects/fan" to="Objects/swing" method="push"]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://objects/tv/tv_basic.png" type="Texture" id=1]
+[ext_resource path="res://objects/tv/tv_switch.png" type="Texture" id=2]
+[ext_resource path="res://objects/tv/screen_anim/animation_tv_screen_1.png" type="Texture" id=3]
+[ext_resource path="res://objects/tv/screen_anim/animation_tv_screen_2.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "nonsignal",
+"speed": 5.0
+} ]
+
+[node name="tv" type="Sprite"]
+texture = ExtResource( 1 )
+offset = Vector2( 0, -167.59 )
+
+[node name="switch1" type="Sprite" parent="."]
+position = Vector2( 85.0099, -210.556 )
+texture = ExtResource( 2 )
+
+[node name="switch2" type="Sprite" parent="."]
+position = Vector2( 85.0099, -172.556 )
+texture = ExtResource( 2 )
+
+[node name="switch3" type="Sprite" parent="."]
+position = Vector2( 85.0099, -136.556 )
+texture = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "nonsignal"
+frame = 1
+playing = true
+offset = Vector2( -44.8, -167.31 )
