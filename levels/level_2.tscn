@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://app/mhLevel/mhLevelStretch.gd" type="Script" id=1]
 [ext_resource path="res://app/mhLocation/mhLocation.gd" type="Script" id=2]
@@ -15,10 +15,14 @@
 [ext_resource path="res://objects/door/door_tape/door_tape.tscn" type="PackedScene" id=13]
 [ext_resource path="res://minigames/wires/wires.tscn" type="PackedScene" id=14]
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=3]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 60, 113.29, 895.55, 0, 0, 0, 0, 173.29, 955.55, 0, 0, 60, 0, 2195.55, 955.55, 0, 0, 0, 0, 2255.55, 895.55, 0, 0, 0, -60, 2255.55, 163.29, 0, 0, 0, 0, 2195.55, 103.29, 0, 0, -60, 0, 173.29, 103.29, 0, 0, 0, 0, 113.29, 163.29, 0, 0, 0, 0, 113.29, 895.55 )
 }
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 62.6701
+height = 132.75
 
 [node name="mhLevelStretch" type="Node"]
 script = ExtResource( 1 )
@@ -36,7 +40,6 @@ __meta__ = {
 }
 location_size = Rect2( 0, 0, 2400, 1080 )
 _texture = ExtResource( 4 )
-_background_color = Color( 0, 0, 0, 1 )
 
 [node name="mhPhysicsPath" type="Node" parent="mhLocation"]
 script = ExtResource( 5 )
@@ -46,7 +49,7 @@ dependences = {
 }
 
 [node name="mhPath2DRect" type="Path2D" parent="mhLocation/mhPhysicsPath"]
-curve = SubResource( 1 )
+curve = SubResource( 3 )
 script = ExtResource( 6 )
 game_area = Rect2( 113.29, 103.29, 2142.26, 852.26 )
 corner_radius = 60
@@ -84,6 +87,12 @@ margin_left = -20.0
 margin_top = -40.0
 margin_right = 20.0
 color = Color( 1, 0, 0, 1 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="mhPlayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mhPlayer/KinematicBody2D"]
+position = Vector2( -3.61819, -114.643 )
+shape = SubResource( 2 )
 
 [node name="Objects" type="Node" parent="."]
 
