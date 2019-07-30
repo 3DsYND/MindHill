@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "mhController",
 "language": "GDScript",
-"path": "res://app/mhPlayer/mhController.gd"
+"path": "res://app/mhPlayer/mhController/mhController.gd"
 }, {
 "base": "Node",
 "class": "mhLevel",

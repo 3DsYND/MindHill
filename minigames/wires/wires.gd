@@ -1,6 +1,7 @@
 extends Node2D
 
 signal fan_worked()
+export(bool) var is_sc_restart = false
 var connected_wire = [false, false, false, false, false, false]
 var selected_wire = 0
 onready var flash_player = $flash/AnimationPlayer
@@ -16,11 +17,19 @@ func connect_wire(wire, slot):
 
 func short_circuit():
 	flash_player.play("flash")
+	if not is_sc_restart: return
+	selected_wire = 0
+	for wire in range(connected_wire.size()):
+		if connected_wire[wire] == false:
+			continue
+		connected_wire[wire] = false
+		get_node("wires/off_"+String(wire+1)).show()
+		get_node("wires/on_"+String(wire+1)).hide()
 
 func check_work():
-	if false:
+	if not connected_wire.has(false):
+		hide()
 		emit_signal("fan_worked")
-	pass
 
 func _on_slot_released_event(slot):
 	connect_wire(selected_wire, slot)
@@ -28,4 +37,6 @@ func _on_slot_released_event(slot):
 
 func _on_wire_released_event(wire):
 	selected_wire = wire
-	print(selected_wire)
+
+func _on_close_button_released():
+	hide()

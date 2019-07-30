@@ -26,3 +26,4 @@ func _ready():
 
 func _process(delta):
 	position = deps.get("controller").get_position()
+	rotation = deps.get("controller").get_rotation()

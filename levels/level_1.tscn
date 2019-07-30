@@ -8,8 +8,9 @@
 [ext_resource path="res://app/mhLocation/mhBackground/mhBackgroundStatic.gd" type="Script" id=6]
 [ext_resource path="res://objects/locations/chess/background_dark.png" type="Texture" id=7]
 [ext_resource path="res://app/mhPlayer/mhPlayer.gd" type="Script" id=8]
-[ext_resource path="res://app/mhPlayer/mhController.gd" type="Script" id=9]
+[ext_resource path="res://app/mhPlayer/mhController/mhController.gd" type="Script" id=9]
 [ext_resource path="res://app/mhPlayer/mhCamera.gd" type="Script" id=10]
+
 
 [sub_resource type="Curve2D" id=1]
 _data = {

@@ -1,0 +1,136 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://minigames/tv/tv.gd" type="Script" id=1]
+[ext_resource path="res://minigames/tv/TV_base.png" type="Texture" id=2]
+[ext_resource path="res://minigames/tv/TV_switch.png" type="Texture" id=3]
+[ext_resource path="res://minigames/tv/screen_anim/animation_TV_screen_1.png" type="Texture" id=4]
+[ext_resource path="res://minigames/tv/screen_anim/animation_TV_screen_2.png" type="Texture" id=5]
+[ext_resource path="res://minigames/tv/digits_anim/animation_number_0.png" type="Texture" id=6]
+[ext_resource path="res://minigames/tv/digits_anim/animation_number_1.png" type="Texture" id=7]
+[ext_resource path="res://minigames/tv/digits_anim/animation_number_2.png" type="Texture" id=8]
+[ext_resource path="res://minigames/tv/digits_anim/animation_number_3.png" type="Texture" id=9]
+[ext_resource path="res://minigames/tv/digits_anim/animation_number_4.png" type="Texture" id=10]
+[ext_resource path="res://minigames/tv/digits_anim/animation_number_5.png" type="Texture" id=11]
+[ext_resource path="res://minigames/tv/digits_anim/animation_number_6.png" type="Texture" id=12]
+[ext_resource path="res://minigames/tv/digits_anim/animation_number_7.png" type="Texture" id=13]
+[ext_resource path="res://minigames/tv/digits_anim/animation_number_8.png" type="Texture" id=14]
+[ext_resource path="res://minigames/tv/digits_anim/animation_number_9.png" type="Texture" id=15]
+[ext_resource path="res://minigames/tv/blot.png" type="Texture" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 100, 100 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 165.49, 60 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 1000, 1000 )
+
+[node name="tv" type="Node2D"]
+position = Vector2( 0, 107.56 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ],
+"_edit_vertical_guides_": [  ]
+}
+
+[node name="tv" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+offset = Vector2( 990, 540 )
+
+[node name="switches" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="switch_0" type="Sprite" parent="switches"]
+position = Vector2( 1237.26, 343.936 )
+texture = ExtResource( 3 )
+offset = Vector2( -4, 5 )
+
+[node name="switch_1" type="Sprite" parent="switches"]
+position = Vector2( 1237.26, 451.936 )
+texture = ExtResource( 3 )
+offset = Vector2( -4, 5 )
+
+[node name="switch_2" type="Sprite" parent="switches"]
+position = Vector2( 1237.26, 551.936 )
+texture = ExtResource( 3 )
+offset = Vector2( -4, 5 )
+
+[node name="touch_0" type="TouchScreenButton" parent="switches"]
+position = Vector2( 1237.26, 287.736 )
+shape = SubResource( 1 )
+
+[node name="touch_1" type="TouchScreenButton" parent="switches"]
+position = Vector2( 1271.79, 449.809 )
+shape = SubResource( 2 )
+
+[node name="touch_2" type="TouchScreenButton" parent="switches"]
+position = Vector2( 1237.26, 612.036 )
+shape = SubResource( 1 )
+
+[node name="screen" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="screen"]
+position = Vector2( 858.248, 465.863 )
+frames = SubResource( 3 )
+frame = 1
+playing = true
+
+[node name="canal" type="Node2D" parent="screen"]
+visible = false
+position = Vector2( 922.213, 437.256 )
+
+[node name="digit_0" type="AnimatedSprite" parent="screen/canal"]
+position = Vector2( 29.0718, -32.0427 )
+frames = SubResource( 4 )
+
+[node name="digit_1" type="AnimatedSprite" parent="screen/canal"]
+position = Vector2( 80.0718, -32.0427 )
+frames = SubResource( 4 )
+
+[node name="digit_2" type="AnimatedSprite" parent="screen/canal"]
+position = Vector2( 129.072, -32.0427 )
+frames = SubResource( 4 )
+
+[node name="canal_timer" type="Timer" parent="screen"]
+wait_time = 2.0
+one_shot = true
+
+[node name="close_button" type="Node2D" parent="."]
+
+[node name="close_button" type="TouchScreenButton" parent="close_button"]
+position = Vector2( 2523.03, 421.552 )
+z_index = -2
+shape = SubResource( 5 )
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="close_button"]
+position = Vector2( -500, 421.552 )
+z_index = -2
+shape = SubResource( 5 )
+
+[node name="blot" type="Sprite" parent="."]
+visible = false
+position = Vector2( 851.187, 457.864 )
+texture = ExtResource( 16 )
+[connection signal="released" from="switches/touch_0" to="." method="_on_switched" binds= [ 0 ]]
+[connection signal="released" from="switches/touch_1" to="." method="_on_switched" binds= [ 1 ]]
+[connection signal="released" from="switches/touch_2" to="." method="_on_switched" binds= [ 2 ]]
+[connection signal="released" from="close_button/close_button" to="." method="_on_close_button_released"]
+[connection signal="released" from="close_button/TouchScreenButton2" to="." method="_on_close_button_released"]

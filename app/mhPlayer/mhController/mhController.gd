@@ -61,6 +61,9 @@ func _physics_process(delta):
 func get_position():
 	return position_node.position
 
+func get_rotation():
+	return position_node.rotation
+
 func _set_spawn(new_spawn):
 	spawn = new_spawn
 	if deps and deps.has("physics"):
