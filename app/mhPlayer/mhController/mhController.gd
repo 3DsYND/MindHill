@@ -9,6 +9,12 @@ export(Vector2) var spawn = Vector2(100, 100) setget _set_spawn
 export(float) var speed = 110*5
 var run = {"up": 0, "down": 0, "right": 0, "left": 0}
 var position_node
+var _freeze = false
+
+
+func set_freeze(freeze):
+	_freeze = freeze
+	set_physics_process(!freeze)
 
 func _set_dependences(new_dependences):
 	dependences = deps.update(new_dependences)
