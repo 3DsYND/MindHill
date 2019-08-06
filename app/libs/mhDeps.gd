@@ -36,8 +36,6 @@ func has(name):
 	return false
 
 func update(new_paths):
-	if not new_paths: return _get_name_path()
-	
 	var new_components = Array()
 	var checked_components = Dictionary()
 	for name in new_paths.keys():
@@ -87,16 +85,10 @@ func update(new_paths):
 	
 	if _post_update:
 		_root.call(_post_update, checked_components.keys())
-	return _get_name_path()
+	return new_paths
 
 func set_connection(name, signal_name, method):
 	_components[name].connects[signal_name] = method
-
-func _get_name_path():
-	var paths = Dictionary()
-	for name in _components.keys():
-		paths[name] = _components[name].path
-	return paths
 
 func _has_component_signal(name, signal_name):
 	for t_signal in _components[name].node.get_signal_list():
