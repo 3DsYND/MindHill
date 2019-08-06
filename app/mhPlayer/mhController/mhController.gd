@@ -2,7 +2,7 @@ tool
 extends Node
 class_name mhController
 
-onready var deps = preload("res://app/libs/mhDeps.gd").new(self, "_post_update_dependences", "_pre_update_dependences")
+var deps = preload("res://app/libs/mhDeps.gd").new(self, "_post_update_dependences", "_pre_update_dependences")
 export(Dictionary) var dependences setget _set_dependences
 
 export(Vector2) var spawn = Vector2(100, 100) setget _set_spawn
@@ -11,10 +11,7 @@ var run = {"up": 0, "down": 0, "right": 0, "left": 0}
 var position_node
 
 func _set_dependences(new_dependences):
-	if not deps:
-		dependences = new_dependences
-	else:
-		dependences = deps.update(new_dependences)
+	dependences = deps.update(new_dependences)
 
 func _pre_update_dependences(new_components_name=null):
 	if deps.get("physics"):

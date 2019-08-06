@@ -36,6 +36,8 @@ func has(name):
 	return false
 
 func update(new_paths):
+	if _components.empty():
+		return new_paths
 	var new_components = Array()
 	var checked_components = Dictionary()
 	for name in new_paths.keys():

@@ -2,16 +2,12 @@ tool
 extends Node2D
 class_name mhPlayer
 
-onready var deps = preload("res://app/libs/mhDeps.gd").new(self, "_post_update_dependences", "_pre_update_dependences")
+var deps = preload("res://app/libs/mhDeps.gd").new(self, "_post_update_dependences", "_pre_update_dependences")
 export(Dictionary) var dependences setget _set_dependences
 
 
 func _set_dependences(new_dependences):
-	if not deps:
-		dependences = new_dependences
-	else:
-		print(new_dependences)
-		dependences = deps.update(new_dependences)
+	dependences = deps.update(new_dependences)
 
 func _ready():
 	set_process(false)

@@ -2,17 +2,14 @@ tool
 extends mhPhysics
 class_name mhPhysicsPath
 
-onready var deps = preload("res://app/libs/mhDeps.gd").new(self)
+var deps = preload("res://app/libs/mhDeps.gd").new(self)
 export(Dictionary) var dependences setget _set_dependences
 
 var _path
 
 
 func _set_dependences(new_dependences):
-	if not deps:
-		dependences = new_dependences
-	else:
-		dependences = deps.update(new_dependences)
+	dependences = deps.update(new_dependences)
 
 func _ready():
 	deps.add("path2d", Path2D)
