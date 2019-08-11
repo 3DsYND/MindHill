@@ -1,3 +1,4 @@
+tool
 extends mhMinigame
 
 signal fan_worked()
@@ -37,6 +38,3 @@ func _on_slot_released_event(slot):
 
 func _on_wire_released_event(wire):
 	selected_wire = wire
-
-func _on_close_button_released():
-	hide()

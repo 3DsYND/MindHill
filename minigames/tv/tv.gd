@@ -31,6 +31,11 @@ func set_current_canal(digits):
 
 func _ready():
 	_set_canal(default_canal)
+	connect("minigame_finished", self, "_on_minigame_finished")
+
+func _on_minigame_finished():
+	if blot_node.visible:
+		emit_signal("blot_finded")
 
 func _set_canal(v_canal):
 	if v_canal < 0 or v_canal > 999:
@@ -45,9 +50,3 @@ func _on_switched(switch):
 	else:
 		new_canal[switch] = 0
 	set_current_canal(new_canal)
-
-
-func _on_close_button_released():
-	if blot_node.visible:
-		emit_signal("blot_finded")
-	hide()

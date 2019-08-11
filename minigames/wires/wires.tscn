@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://minigames/wires/wires.gd" type="Script" id=1]
 [ext_resource path="res://app/mhLocation/mhBackground/mhBackgroundStatic.gd" type="Script" id=2]
@@ -35,12 +35,10 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.533333 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 1000, 1000 )
-
 [node name="wires" type="Node2D"]
 z_index = 1
 script = ExtResource( 1 )
+minigame_limits = Rect2( 426, 207, 1045, 671 )
 
 [node name="mhBackgroundStatic" type="Node2D" parent="."]
 position = Vector2( 369.185, 157 )
@@ -178,16 +176,6 @@ color = Color( 1, 1, 1, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="flash"]
 anims/flash = SubResource( 2 )
-
-[node name="close_buttons" type="Node2D" parent="."]
-
-[node name="close_button_r" type="TouchScreenButton" parent="close_buttons"]
-position = Vector2( 2508.37, 481.68 )
-shape = SubResource( 3 )
-
-[node name="close_button_l" type="TouchScreenButton" parent="close_buttons"]
-position = Vector2( -571.56, 481.68 )
-shape = SubResource( 3 )
 [connection signal="released" from="buttons/button_wire_1" to="." method="_on_wire_released_event" binds= [ 1 ]]
 [connection signal="released" from="buttons/button_wire_2" to="." method="_on_wire_released_event" binds= [ 2 ]]
 [connection signal="released" from="buttons/button_wire_3" to="." method="_on_wire_released_event" binds= [ 3 ]]
@@ -200,5 +188,3 @@ shape = SubResource( 3 )
 [connection signal="released" from="buttons/button_slot_4" to="." method="_on_slot_released_event" binds= [ 4 ]]
 [connection signal="released" from="buttons/button_slot_5" to="." method="_on_slot_released_event" binds= [ 5 ]]
 [connection signal="released" from="buttons/button_slot_6" to="." method="_on_slot_released_event" binds= [ 6 ]]
-[connection signal="pressed" from="close_buttons/close_button_r" to="." method="_on_close_button_released"]
-[connection signal="released" from="close_buttons/close_button_l" to="." method="_on_close_button_released"]

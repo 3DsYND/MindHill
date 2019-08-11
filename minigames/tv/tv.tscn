@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://minigames/tv/tv.gd" type="Script" id=1]
 [ext_resource path="res://minigames/tv/TV_base.png" type="Texture" id=2]
@@ -38,9 +38,6 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 1000, 1000 )
 
 [node name="tv" type="Node2D"]
 position = Vector2( 0, 107.56 )
@@ -90,6 +87,7 @@ editor/display_folded = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="screen"]
 position = Vector2( 858.248, 465.863 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="canal" type="Node2D" parent="screen"]
@@ -112,18 +110,6 @@ frames = SubResource( 4 )
 wait_time = 2.0
 one_shot = true
 
-[node name="close_button" type="Node2D" parent="."]
-
-[node name="close_button" type="TouchScreenButton" parent="close_button"]
-position = Vector2( 2523.03, 421.552 )
-z_index = -2
-shape = SubResource( 5 )
-
-[node name="TouchScreenButton2" type="TouchScreenButton" parent="close_button"]
-position = Vector2( -500, 421.552 )
-z_index = -2
-shape = SubResource( 5 )
-
 [node name="blot" type="Sprite" parent="."]
 visible = false
 position = Vector2( 851.187, 457.864 )
@@ -131,5 +117,3 @@ texture = ExtResource( 16 )
 [connection signal="released" from="switches/touch_0" to="." method="_on_switched" binds= [ 0 ]]
 [connection signal="released" from="switches/touch_1" to="." method="_on_switched" binds= [ 1 ]]
 [connection signal="released" from="switches/touch_2" to="." method="_on_switched" binds= [ 2 ]]
-[connection signal="released" from="close_button/close_button" to="." method="_on_close_button_released"]
-[connection signal="released" from="close_button/TouchScreenButton2" to="." method="_on_close_button_released"]

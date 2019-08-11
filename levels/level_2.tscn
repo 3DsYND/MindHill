@@ -44,6 +44,7 @@ _texture = ExtResource( 4 )
 _background_color = Color( 0, 0, 0, 1 )
 
 [node name="mhPhysicsPath" type="Node" parent="mhLocation"]
+editor/display_folded = true
 script = ExtResource( 5 )
 _debug_info = false
 dependences = {
@@ -57,6 +58,7 @@ game_area = Rect2( 113.29, 103.29, 2142.26, 852.26 )
 corner_radius = 60
 
 [node name="mhPlayer" type="Node2D" parent="."]
+editor/display_folded = true
 z_index = 11
 script = ExtResource( 7 )
 dependences = {
@@ -96,9 +98,9 @@ editor/display_folded = true
 position = Vector2( -3.61819, -114.643 )
 shape = SubResource( 2 )
 
-[node name="Objects" type="Node" parent="."]
+[node name="objects" type="Node" parent="."]
 
-[node name="fan" parent="Objects" instance=ExtResource( 10 )]
+[node name="fan" parent="objects" instance=ExtResource( 10 )]
 position = Vector2( 72.1555, 665.661 )
 z_index = 21
 animation = "stop"
@@ -108,17 +110,17 @@ dependences = {
 "wires_minigame": NodePath("../../minigames/wires")
 }
 
-[node name="tv" parent="Objects" instance=ExtResource( 11 )]
+[node name="tv" parent="objects" instance=ExtResource( 11 )]
 position = Vector2( 1360, 941.798 )
 dependences = {
 "tv_minigame": NodePath("../../minigames/tv")
 }
 
-[node name="swing" parent="Objects" instance=ExtResource( 12 )]
+[node name="swing" parent="objects" instance=ExtResource( 12 )]
 position = Vector2( 596.834, 20.8124 )
 z_index = 21
 
-[node name="door_tape" parent="Objects" instance=ExtResource( 13 )]
+[node name="door_tape" parent="objects" instance=ExtResource( 13 )]
 position = Vector2( 2226.92, 660.985 )
 
 [node name="minigames" type="CanvasLayer" parent="."]
@@ -130,6 +132,6 @@ is_sc_restart = true
 
 [node name="tv" parent="minigames" instance=ExtResource( 15 )]
 visible = false
-[connection signal="fan_started" from="Objects/fan" to="Objects/swing" method="push"]
-[connection signal="fan_worked" from="minigames/wires" to="Objects/fan" method="_on_wires_minigame_fan_worked"]
-[connection signal="blot_finded" from="minigames/tv" to="Objects/door_tape" method="go"]
+[connection signal="fan_started" from="objects/fan" to="objects/swing" method="push"]
+[connection signal="fan_worked" from="minigames/wires" to="objects/fan" method="_on_wires_minigame_fan_worked"]
+[connection signal="blot_finded" from="minigames/tv" to="objects/door_tape" method="go"]
