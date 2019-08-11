@@ -32,9 +32,14 @@ func check_work():
 		hide()
 		emit_signal("fan_worked")
 
-func _on_slot_released_event(slot):
-	connect_wire(selected_wire, slot)
-	check_work()
-
-func _on_wire_released_event(wire):
-	selected_wire = wire
+func _on_buttons_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		if not event.is_pressed():
+			return
+		if shape_idx < 6:
+			# is slot
+			connect_wire(selected_wire, shape_idx+1)
+			check_work()
+		else:
+			# is wire
+			selected_wire = shape_idx - 5

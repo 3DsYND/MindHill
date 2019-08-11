@@ -52,7 +52,6 @@ texture = ExtResource( 2 )
 offset = Vector2( 990, 540 )
 
 [node name="switches" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="switch_0" type="Sprite" parent="switches"]
 position = Vector2( 1237.26, 343.936 )
@@ -69,16 +68,18 @@ position = Vector2( 1237.26, 551.936 )
 texture = ExtResource( 3 )
 offset = Vector2( -4, 5 )
 
-[node name="touch_0" type="TouchScreenButton" parent="switches"]
-position = Vector2( 1237.26, 287.736 )
+[node name="switches" type="Area2D" parent="switches"]
+position = Vector2( 1237.26, 288 )
+
+[node name="switch_1" type="CollisionShape2D" parent="switches/switches"]
 shape = SubResource( 1 )
 
-[node name="touch_1" type="TouchScreenButton" parent="switches"]
-position = Vector2( 1271.79, 449.809 )
+[node name="switch_2" type="CollisionShape2D" parent="switches/switches"]
+position = Vector2( 34.52, 161.87 )
 shape = SubResource( 2 )
 
-[node name="touch_2" type="TouchScreenButton" parent="switches"]
-position = Vector2( 1237.26, 612.036 )
+[node name="switch_3" type="CollisionShape2D" parent="switches/switches"]
+position = Vector2( 0, 324.32 )
 shape = SubResource( 1 )
 
 [node name="screen" type="Node2D" parent="."]
@@ -87,10 +88,10 @@ editor/display_folded = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="screen"]
 position = Vector2( 858.248, 465.863 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="canal" type="Node2D" parent="screen"]
+editor/display_folded = true
 visible = false
 position = Vector2( 922.213, 437.256 )
 
@@ -114,6 +115,4 @@ one_shot = true
 visible = false
 position = Vector2( 851.187, 457.864 )
 texture = ExtResource( 16 )
-[connection signal="released" from="switches/touch_0" to="." method="_on_switched" binds= [ 0 ]]
-[connection signal="released" from="switches/touch_1" to="." method="_on_switched" binds= [ 1 ]]
-[connection signal="released" from="switches/touch_2" to="." method="_on_switched" binds= [ 2 ]]
+[connection signal="input_event" from="switches/switches" to="." method="_on_switches_input_event"]

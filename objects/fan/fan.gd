@@ -29,7 +29,7 @@ func _ready():
 	deps.add("wires_minigame")
 	dependences = deps.update(dependences)
 
-func _on_mhButton_action_player_activated():
+func _on_button_player_activated():
 	deps.get("wires_minigame").show()
 
 func _on_wires_minigame_fan_worked():

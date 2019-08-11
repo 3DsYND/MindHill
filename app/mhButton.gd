@@ -3,13 +3,12 @@ extends Node2D
 
 class_name mhButton
 
+signal button_clicked
+signal button_player_activated
 export(Shape2D) var shape setget _update_shape
 var area
 var collision
-var touch
 
-signal action_clicked
-signal action_player_activated
 
 func _init():
 	if has_node("_aread2d"):
@@ -26,22 +25,18 @@ func _init():
 		collision = CollisionShape2D.new()
 		collision.name = "_collision"
 		area.add_child(collision)
+		area.connect("input_event", self, "_on_button_clicked")
 		add_child(area)
-	
-	if has_node("_touch_button"):
-		touch = get_node("_touch_button")
-	else:
-		touch = TouchScreenButton.new()
-		touch.name = "_touch_button"
-		touch.connect("pressed", self, "_on_touch_pressed")
-		add_child(touch)
 
 func _update_shape(new_shape):
 	shape = new_shape
 	collision.shape = new_shape
-	touch.shape = new_shape
 
-func _on_touch_pressed():
-	emit_signal("action_clicked")
-	if area.get_overlapping_bodies():
-		emit_signal("action_player_activated")
+func _on_button_clicked(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		if not event.is_pressed():
+			return
+		
+		emit_signal("button_clicked")
+		if area.get_overlapping_bodies():
+			emit_signal("button_player_activated")

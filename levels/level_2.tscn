@@ -16,7 +16,7 @@
 [ext_resource path="res://minigames/wires/wires.tscn" type="PackedScene" id=14]
 [ext_resource path="res://minigames/tv/tv.tscn" type="PackedScene" id=15]
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=3]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 60, 113.29, 895.55, 0, 0, 0, 0, 173.29, 955.55, 0, 0, 60, 0, 2195.55, 955.55, 0, 0, 0, 0, 2255.55, 895.55, 0, 0, 0, -60, 2255.55, 163.29, 0, 0, 0, 0, 2195.55, 103.29, 0, 0, -60, 0, 173.29, 103.29, 0, 0, 0, 0, 113.29, 163.29, 0, 0, 0, 0, 113.29, 895.55 )
 }
@@ -36,12 +36,8 @@ script = ExtResource( 2 )
 [node name="mhBackgroundStatic" type="Node2D" parent="mhLocation"]
 z_index = -1
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
 location_size = Rect2( 0, 0, 2400, 1080 )
 _texture = ExtResource( 4 )
-_background_color = Color( 0, 0, 0, 1 )
 
 [node name="mhPhysicsPath" type="Node" parent="mhLocation"]
 editor/display_folded = true
@@ -52,7 +48,7 @@ dependences = {
 }
 
 [node name="mhPath2DRect" type="Path2D" parent="mhLocation/mhPhysicsPath"]
-curve = SubResource( 1 )
+curve = SubResource( 3 )
 script = ExtResource( 6 )
 game_area = Rect2( 113.29, 103.29, 2142.26, 852.26 )
 corner_radius = 60
@@ -99,6 +95,7 @@ position = Vector2( -3.61819, -114.643 )
 shape = SubResource( 2 )
 
 [node name="objects" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="fan" parent="objects" instance=ExtResource( 10 )]
 position = Vector2( 72.1555, 665.661 )
@@ -124,10 +121,12 @@ z_index = 21
 position = Vector2( 2226.92, 660.985 )
 
 [node name="minigames" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = 2
 
 [node name="wires" parent="minigames" instance=ExtResource( 14 )]
 visible = false
+z_index = 23
 is_sc_restart = true
 
 [node name="tv" parent="minigames" instance=ExtResource( 15 )]

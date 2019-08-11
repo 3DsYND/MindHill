@@ -43,10 +43,15 @@ func _set_canal(v_canal):
 	default_canal = int(v_canal)
 	set_current_canal([default_canal/100, default_canal/10%10, default_canal%10])
 
-func _on_switched(switch):
+func _switch(switch):
 	var new_canal = current_canal
 	if new_canal[switch] != 9:
 		new_canal[switch] += 1
 	else:
 		new_canal[switch] = 0
 	set_current_canal(new_canal)
+
+func _on_switches_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			_switch(shape_idx)

@@ -15,5 +15,5 @@ func _ready():
 	deps.add("tv_minigame")
 	dependences = deps.update(dependences)
 
-func _on_mhButton_action_player_activated():
+func _on_button_player_activated():
 	deps.get("tv_minigame").show()
