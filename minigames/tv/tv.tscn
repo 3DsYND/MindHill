@@ -90,7 +90,6 @@ editor/display_folded = true
 [node name="AnimatedSprite" type="AnimatedSprite" parent="screen"]
 position = Vector2( 858.248, 465.863 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="canal" type="Node2D" parent="screen"]

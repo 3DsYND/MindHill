@@ -1,5 +1,5 @@
 tool
-extends Node2D
+extends mhMinigame
 
 signal blot_finded
 export(int, 0, 999) var aim_canal = 232

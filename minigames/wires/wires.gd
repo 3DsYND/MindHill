@@ -1,4 +1,4 @@
-extends Node2D
+extends mhMinigame
 
 signal fan_worked()
 export(bool) var is_sc_restart = false

@@ -35,6 +35,11 @@ func _ready():
 	dependences = deps.update(dependences)
 	if position_node and not Engine.is_editor_hint():
 		set_physics_process(true)
+	
+	var minigames = get_tree().get_nodes_in_group("minigames")
+	for minigame in minigames:
+		minigame.connect("minigame_started", self, "set_freeze", [true])
+		minigame.connect("minigame_finished", self, "set_freeze", [false])
 
 func _input(event):
 	if event.is_action_pressed("run_right"):
