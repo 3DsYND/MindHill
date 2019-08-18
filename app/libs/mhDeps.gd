@@ -31,32 +31,26 @@ func get(name):
 	return null
 
 func has(name):
-	if _components.has(name):
+	if _components.has(name) and _components[name].path:
 		return true
 	return false
 
 func update(new_paths):
-	if _components.empty():
-		return new_paths
-	var new_components = Array()
 	var checked_components = Dictionary()
+	if not new_paths:
+		return _get_name_path()
+	
 	for name in new_paths.keys():
-		if not name: continue
-		if not _components.has(name): continue
-		var comp = _components[name]
-		if not comp:
-			printerr("Component ", name, " not registered as dependence.")
+		if not _components.has(name): 
 			continue
-		
-		if not new_paths[name]:
-			comp.path = NodePath()
-			comp.node = null
+		var comp = _components[name]
 		if comp.path == new_paths[name]:
 			continue
 		
 		if not _root.has_node(new_paths[name]):
 			printerr("Node ", new_paths[name], " does not exist.")
 			continue
+		
 		var node = _root.get_node(new_paths[name])
 		if comp.type and not node is comp.type:
 			printerr("Component ", name, " has the wrong type.")
@@ -87,7 +81,13 @@ func update(new_paths):
 	
 	if _post_update:
 		_root.call(_post_update, checked_components.keys())
-	return new_paths
+	
+	return _get_name_path(new_paths)
+
+func _get_name_path(paths=Dictionary()):
+	for name in _components.keys():
+		paths[name] = _components[name].path
+	return paths
 
 func set_connection(name, signal_name, method):
 	_components[name].connects[signal_name] = method
@@ -96,7 +96,7 @@ func _has_component_signal(name, signal_name):
 	for t_signal in _components[name].node.get_signal_list():
 		if t_signal["name"] == signal_name: return true
 	return false
-	
+
 func _check_connection(name, signal_name, method):
 	if not _components.has(name):
 		printerr("Component ", name, " does not exist")
