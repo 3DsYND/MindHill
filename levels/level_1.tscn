@@ -2,14 +2,17 @@
 
 [ext_resource path="res://app/mhLevel/mhLevelStretch.gd" type="Script" id=1]
 [ext_resource path="res://app/mhLocation/mhLocation.gd" type="Script" id=2]
-[ext_resource path="res://app/mhLocation/mhPhysics/mhPhysicsPath.gd" type="Script" id=3]
-[ext_resource path="res://app/mhPath2D/mhPath2DRect.gd" type="Script" id=4]
+[ext_resource path="res://app/mhLocation/mhPhysics/mhPhysicsPath/mhPhysicsPath.gd" type="Script" id=3]
+[ext_resource path="res://app/mhLocation/mhPhysics/mhPhysicsPath/mhPath2DRect.gd" type="Script" id=4]
 [ext_resource path="res://app/mhLocation/mhPhysics/mhPhysics.gd" type="Script" id=5]
 [ext_resource path="res://app/mhLocation/mhBackground/mhBackgroundStatic.gd" type="Script" id=6]
 [ext_resource path="res://objects/locations/chess/background_dark.png" type="Texture" id=7]
 [ext_resource path="res://app/mhPlayer/mhPlayer.gd" type="Script" id=8]
 [ext_resource path="res://app/mhPlayer/mhController/mhController.gd" type="Script" id=9]
 [ext_resource path="res://app/mhPlayer/mhCamera.gd" type="Script" id=10]
+
+
+
 
 [sub_resource type="Curve2D" id=1]
 _data = {

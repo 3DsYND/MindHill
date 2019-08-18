@@ -9,8 +9,8 @@ export(Dictionary) var dependences setget _set_dependences
 func _set_dependences(new_dependences):
 	dependences = deps.update(new_dependences)
 
-func _post_update_dependences(new_components_name=null):
-	if deps.get("background"):
+func _post_update_dependences(new_components=null):
+	if "background" in new_components:
 		set_limits(deps.get("background").location_size)
 
 func _ready():

@@ -62,7 +62,7 @@ _global_script_classes=[ {
 "base": "Path2D",
 "class": "mhPath2DRect",
 "language": "GDScript",
-"path": "res://app/mhPath2D/mhPath2DRect.gd"
+"path": "res://app/mhLocation/mhPhysics/mhPhysicsPath/mhPath2DRect.gd"
 }, {
 "base": "Node",
 "class": "mhPhysics",
@@ -72,17 +72,22 @@ _global_script_classes=[ {
 "base": "mhPhysics",
 "class": "mhPhysicsPath",
 "language": "GDScript",
-"path": "res://app/mhLocation/mhPhysics/mhPhysicsPath.gd"
+"path": "res://app/mhLocation/mhPhysics/mhPhysicsPath/mhPhysicsPath.gd"
 }, {
 "base": "Node2D",
 "class": "mhPlayer",
 "language": "GDScript",
 "path": "res://app/mhPlayer/mhPlayer.gd"
 }, {
+"base": "Node2D",
+"class": "mhPosStabilization",
+"language": "GDScript",
+"path": "res://app/mhPlayer/mhController/mhPosStabilization.gd"
+}, {
 "base": "Object",
 "class": "mhProperties",
 "language": "GDScript",
-"path": "res://test/mhProperties.gd"
+"path": "res://temp/mhProperties.gd"
 } ]
 _global_script_class_icons={
 "mhBackground": "",
@@ -99,6 +104,7 @@ _global_script_class_icons={
 "mhPhysics": "",
 "mhPhysicsPath": "",
 "mhPlayer": "",
+"mhPosStabilization": "",
 "mhProperties": ""
 }
 
@@ -122,6 +128,10 @@ window/size/test_width=960
 window/size/test_height=540
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "gut" )
 
 [input]
 
@@ -151,10 +161,6 @@ run_down={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"unicode":0,"echo":false,"script":null)
  ]
 }
-
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
