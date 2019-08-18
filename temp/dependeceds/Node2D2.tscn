@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://app/mhLocation/mhBackground/mhBackgroundStatic.gd" type="Script" id=1]
+[ext_resource path="res://app/mhPlayer/mhCamera.gd" type="Script" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="mhBackgroundStatic" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="mhCamera" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+script = ExtResource( 2 )
+dependences = {
+"background": NodePath("../mhBackgroundStatic")
+}

@@ -1,10 +1,11 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://test/input/Node2D.gd" type="Script" id=1]
-[ext_resource path="res://test/input/Node2D.tres.gd" type="Script" id=2]
+[ext_resource path="res://temp/input/Node2D.gd" type="Script" id=1]
+[ext_resource path="res://temp/input/Node2D.tres.gd" type="Script" id=2]
 [ext_resource path="res://minigames/wires/wires.tscn" type="PackedScene" id=3]
 [ext_resource path="res://app/mhLevel/mhLevelStretch.gd" type="Script" id=4]
 [ext_resource path="res://app/mhPlayer/mhController/mhControllerTouchLR.gd" type="Script" id=5]
+
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
