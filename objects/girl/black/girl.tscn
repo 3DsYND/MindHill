@@ -1,13 +1,48 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://objects/girl/black/animation_stop.png" type="Texture" id=1]
-[ext_resource path="res://objects/girl/black/animation_run_1.png" type="Texture" id=2]
-[ext_resource path="res://objects/girl/black/animation_run_2.png" type="Texture" id=3]
-[ext_resource path="res://objects/girl/black/animation_run_3.png" type="Texture" id=4]
-[ext_resource path="res://objects/girl/black/animation_run_4.png" type="Texture" id=5]
-[ext_resource path="res://objects/girl/black/animation_run_5.png" type="Texture" id=6]
-[ext_resource path="res://objects/girl/black/animation_run_6.png" type="Texture" id=7]
-[ext_resource path="res://objects/girl/black/girl.gd" type="Script" id=8]
+[ext_resource path="res://objects/girl/black/run/animation_run_1.png" type="Texture" id=2]
+[ext_resource path="res://objects/girl/black/run/animation_run_2.png" type="Texture" id=3]
+[ext_resource path="res://objects/girl/black/run/animation_run_3.png" type="Texture" id=4]
+[ext_resource path="res://objects/girl/black/run/animation_run_4.png" type="Texture" id=5]
+[ext_resource path="res://objects/girl/black/run/animation_run_5.png" type="Texture" id=6]
+[ext_resource path="res://objects/girl/black/run/animation_run_6.png" type="Texture" id=7]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_middle_0.png" type="Texture" id=8]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_middle_1.png" type="Texture" id=9]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_middle_2.png" type="Texture" id=10]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_middle_3.png" type="Texture" id=11]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_middle_4.png" type="Texture" id=12]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_middle_5.png" type="Texture" id=13]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_middle_6.png" type="Texture" id=14]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_middle_7.png" type="Texture" id=15]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_middle_8.png" type="Texture" id=16]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_middle_9.png" type="Texture" id=17]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_down_0.png" type="Texture" id=18]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_down_1.png" type="Texture" id=19]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_down_2.png" type="Texture" id=20]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_down_3.png" type="Texture" id=21]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_down_4.png" type="Texture" id=22]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_down_5.png" type="Texture" id=23]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_down_6.png" type="Texture" id=24]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_down_7.png" type="Texture" id=25]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_down_8.png" type="Texture" id=26]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_down_9.png" type="Texture" id=27]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_up_0.png" type="Texture" id=28]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_up_1.png" type="Texture" id=29]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_up_2.png" type="Texture" id=30]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_up_3.png" type="Texture" id=31]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_up_4.png" type="Texture" id=32]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_up_5.png" type="Texture" id=33]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_up_6.png" type="Texture" id=34]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_up_7.png" type="Texture" id=35]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_up_8.png" type="Texture" id=36]
+[ext_resource path="res://objects/girl/black/switch/animation_switch_up_9.png" type="Texture" id=37]
+[ext_resource path="res://objects/girl/black/fan/animation_sit_fan_1.png" type="Texture" id=38]
+[ext_resource path="res://objects/girl/black/fan/animation_sit_fan_2.png" type="Texture" id=39]
+[ext_resource path="res://objects/girl/black/fan/animation_sit_fan_3.png" type="Texture" id=40]
+[ext_resource path="res://objects/girl/black/fan/animation_sit_fan_4.png" type="Texture" id=41]
+[ext_resource path="res://objects/girl/black/fan/animation_sit_fan_5.png" type="Texture" id=42]
+[ext_resource path="res://objects/girl/black/girl.gd" type="Script" id=43]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -20,11 +55,35 @@ animations = [ {
 "loop": true,
 "name": "run",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": false,
+"name": "switch_middle",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ) ],
+"loop": false,
+"name": "switch_bottom",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ) ],
+"loop": false,
+"name": "switch_top",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ) ],
+"loop": false,
+"name": "fan_sit",
+"speed": 10.0
 } ]
 
 [node name="girl" type="AnimatedSprite"]
-position = Vector2( 10, -100 )
+position = Vector2( -72, -215 )
 frames = SubResource( 1 )
 animation = "stop"
 playing = true
-script = ExtResource( 8 )
+centered = false
+script = ExtResource( 43 )
+dependences = {
+"controller": NodePath("")
+}

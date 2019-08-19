@@ -18,7 +18,7 @@
 [ext_resource path="res://minigames/wires/wires.tscn" type="PackedScene" id=16]
 [ext_resource path="res://minigames/tv/tv.tscn" type="PackedScene" id=17]
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=3]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 60, 113.29, 895.55, 0, 0, 0, 0, 173.29, 955.55, 0, 0, 60, 0, 2195.55, 955.55, 0, 0, 0, 0, 2255.55, 895.55, 0, 0, 0, -60, 2255.55, 163.29, 0, 0, 0, 0, 2195.55, 103.29, 0, 0, -60, 0, 173.29, 103.29, 0, 0, 0, 0, 113.29, 163.29, 0, 0, 0, 0, 113.29, 895.55 )
 }
@@ -48,7 +48,7 @@ dependences = {
 }
 
 [node name="mhPath2DRect" type="Path2D" parent="mhLocation/mhPhysicsPath"]
-curve = SubResource( 1 )
+curve = SubResource( 3 )
 script = ExtResource( 6 )
 game_area = Rect2( 113.29, 103.29, 2142.26, 852.26 )
 corner_radius = 60
