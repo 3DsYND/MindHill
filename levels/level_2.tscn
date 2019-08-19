@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://app/mhLevel/mhLevelStretch.gd" type="Script" id=1]
 [ext_resource path="res://app/mhLocation/mhLocation.gd" type="Script" id=2]
@@ -10,12 +10,13 @@
 [ext_resource path="res://app/mhPlayer/mhController/mhControllerTouchLR.gd" type="Script" id=8]
 [ext_resource path="res://app/mhPlayer/mhController/mhPosStabilization.gd" type="Script" id=9]
 [ext_resource path="res://app/mhPlayer/mhCamera.gd" type="Script" id=10]
-[ext_resource path="res://objects/fan/fan.tscn" type="PackedScene" id=11]
-[ext_resource path="res://objects/tv/tv.tscn" type="PackedScene" id=12]
-[ext_resource path="res://objects/swing/swing.tscn" type="PackedScene" id=13]
-[ext_resource path="res://objects/door/door_tape/door_tape.tscn" type="PackedScene" id=14]
-[ext_resource path="res://minigames/wires/wires.tscn" type="PackedScene" id=15]
-[ext_resource path="res://minigames/tv/tv.tscn" type="PackedScene" id=16]
+[ext_resource path="res://objects/girl/black/girl.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/fan/fan.tscn" type="PackedScene" id=12]
+[ext_resource path="res://objects/tv/tv.tscn" type="PackedScene" id=13]
+[ext_resource path="res://objects/swing/swing.tscn" type="PackedScene" id=14]
+[ext_resource path="res://objects/door/door_tape/door_tape.tscn" type="PackedScene" id=15]
+[ext_resource path="res://minigames/wires/wires.tscn" type="PackedScene" id=16]
+[ext_resource path="res://minigames/tv/tv.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -23,8 +24,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 62.6701
-height = 132.75
+radius = 28.286
+height = 124.511
 
 [node name="mhLevelStretch" type="Node"]
 script = ExtResource( 1 )
@@ -65,8 +66,7 @@ dependences = {
 "level": NodePath("../.."),
 "physics": NodePath("../../mhLocation/mhPhysicsPath")
 }
-spawn = Vector2( 100, 100 )
-speed = 550.0
+speed = 400.0
 
 [node name="mhPosStabilization" type="Node2D" parent="mhPlayer/mhControllerTouchLR"]
 script = ExtResource( 9 )
@@ -87,52 +87,51 @@ dependences = {
 "background": NodePath("../../mhLocation/mhBackgroundStatic")
 }
 
-[node name="ColorRect" type="ColorRect" parent="mhPlayer"]
-margin_left = -40.0
-margin_top = -223.0
-margin_right = 40.0
-color = Color( 1, 0, 0, 1 )
-
 [node name="KinematicBody2D" type="KinematicBody2D" parent="mhPlayer"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mhPlayer/KinematicBody2D"]
-position = Vector2( -3.61819, -114.643 )
+position = Vector2( 0, -86.282 )
 shape = SubResource( 2 )
+
+[node name="girl" parent="mhPlayer" instance=ExtResource( 11 )]
+dependences = {
+"controller": NodePath("../mhControllerTouchLR")
+}
 
 [node name="objects" type="Node" parent="."]
 
-[node name="fan" parent="objects" instance=ExtResource( 11 )]
+[node name="fan" parent="objects" instance=ExtResource( 12 )]
 position = Vector2( 72.1555, 665.661 )
 z_index = 21
 animation = "stop"
 frame = 4
 times_to_try = [ 2, 3, 2 ]
 dependences = {
-"wires_minigame": NodePath("")
+"wires_minigame": NodePath("../../minigames/wires")
 }
 
-[node name="tv" parent="objects" instance=ExtResource( 12 )]
+[node name="tv" parent="objects" instance=ExtResource( 13 )]
 position = Vector2( 1360, 941.798 )
 dependences = {
-"tv_minigame": NodePath("")
+"tv_minigame": NodePath("../../minigames/tv")
 }
 
-[node name="swing" parent="objects" instance=ExtResource( 13 )]
+[node name="swing" parent="objects" instance=ExtResource( 14 )]
 position = Vector2( 596.834, 20.8124 )
 z_index = 21
 
-[node name="door_tape" parent="objects" instance=ExtResource( 14 )]
+[node name="door_tape" parent="objects" instance=ExtResource( 15 )]
 position = Vector2( 2226.92, 660.985 )
 
 [node name="minigames" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="wires" parent="minigames" instance=ExtResource( 15 )]
+[node name="wires" parent="minigames" instance=ExtResource( 16 )]
 visible = false
 z_index = 23
 is_sc_restart = true
 
-[node name="tv" parent="minigames" instance=ExtResource( 16 )]
+[node name="tv" parent="minigames" instance=ExtResource( 17 )]
 visible = false
 minigame_limits = Rect2( 525, 185, 925, 575 )
 aim_canal = 232
